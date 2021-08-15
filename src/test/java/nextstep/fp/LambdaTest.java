@@ -66,5 +66,4 @@ public class LambdaTest {
         int sum = Lambda.sumAllByCondition(numbers, (number) -> number > 3);
         assertThat(sum).isEqualTo(15);
     }
-
 }

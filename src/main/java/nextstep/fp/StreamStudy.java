@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StreamStudy {
@@ -28,6 +29,14 @@ public class StreamStudy {
         List<String> words = Arrays.asList(contents.split("[\\P{L}]+"));
 
         // TODO 이 부분에 구현한다.
+        words.stream()
+            .filter((word) -> word.length() > 12)
+            .sorted((word1, word2) -> word2.length() - word1.length())
+            .limit(100)
+            .map((word) -> word.toLowerCase())
+            .forEach((word) -> System.out.println(word));
+
+        return ;
     }
 
     public static List<Integer> doubleNumbers(List<Integer> numbers) {
@@ -38,7 +47,12 @@ public class StreamStudy {
         return numbers.stream().reduce(0, (x, y) -> x + y);
     }
 
-    public static long sumOverThreeAndDouble(List<Integer> numbers) {
-        return 0;
+    public static long sumOverThreeAndDouble(List<Integer> numbers) throws Exception {
+        Optional<Integer> sumOfNumbers = numbers.stream().filter((number) -> number > 3).map((number) -> 2 * number).reduce((x, y) -> x + y);
+        if (sumOfNumbers.isPresent()){
+            return sumOfNumbers.get();
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 }

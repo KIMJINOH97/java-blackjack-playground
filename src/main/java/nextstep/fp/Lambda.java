@@ -56,6 +56,7 @@ public class Lambda {
 
     public static int sumAllByCondition(List<Integer> numbers, Conditional conditional) {
         int total = 0;
+        System.out.println(conditional);
         for (int number : numbers) {
             if (conditional.valid(number)) {
                 total += number;
