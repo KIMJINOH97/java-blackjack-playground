@@ -48,4 +48,23 @@ public class LambdaTest {
         int sum = Lambda.sumAllOverThree(numbers);
         assertThat(sum).isEqualTo(15);
     }
+
+    @Test
+    public void sumAllByCondition() throws Exception {
+        int sum = Lambda.sumAllByCondition(numbers, (number) -> true);
+        assertThat(sum).isEqualTo(21);
+    }
+
+    @Test
+    public void sumAllEvenByCondition() throws Exception {
+        int sum = Lambda.sumAllByCondition(numbers, (number) -> number % 2 == 0);
+        assertThat(sum).isEqualTo(12);
+    }
+
+    @Test
+    public void sumAllOverThreeByCondition() throws Exception {
+        int sum = Lambda.sumAllByCondition(numbers, (number) -> number > 3);
+        assertThat(sum).isEqualTo(15);
+    }
+
 }
